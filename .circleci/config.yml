@@ -18,7 +18,9 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: yarn install
+      - run:
+          name: Installing dependencies
+          command: yarn install
 
       - save_cache:
           paths:
@@ -26,4 +28,16 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test
+      - run:
+          name: Unit tests
+          command: yarn test
+
+      # build project!
+      - run:
+          name: Building project
+          command: yarn build
+
+      # Deploy project!
+      - run:
+          name: Deploying project
+          command: yarn netlify-deploy
