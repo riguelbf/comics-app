@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom'
 import Header from '../../components/Header'
 
 describe('Header component', () => {
@@ -10,7 +11,10 @@ describe('Header component', () => {
   })
 
   test('should to render', () => {
-    const { container, getByTestId } = render(<Header />)
+    const { container, getByTestId } = render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>);
 
     const logo = getByTestId("logo");
 

@@ -19,10 +19,12 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased;
+    background: #191920;
   }
 
   body, -moz-user-input, button {
-    font: 14px sans-serof;
+    font: 14px sans-serif;
+     color: #fff;
   }
 
   a {
