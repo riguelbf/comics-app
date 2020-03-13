@@ -18,7 +18,7 @@ describe('Header component', () => {
 
     const logo = getByTestId("logo");
 
-    expect(container).toBeTruthy();
-    expect(logo).toBeTruthy();
+    expect(container).toBeDefined();
+    expect(logo).toBeDefined();
   });
 });
