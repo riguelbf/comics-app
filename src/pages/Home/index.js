@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { Container } from './styles'
 
 import CharactersList from "../../components/CharactersList"
 
-import characters from "../../__tests__/stubs/characters.data.result.json"
+import data from "../../__tests__/stubs/characters.data.result.json"
 
 export default function Home () {
+
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    setCharacters(data.data.results);
+  }, [])
+
+
   return (
     <Container>
-      <CharactersList characters={characters.data.results} />
+      <CharactersList characters={characters} />
     </Container>
   )
 }
