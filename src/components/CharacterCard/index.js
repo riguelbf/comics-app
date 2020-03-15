@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { MdAccountCircle, MdVpnKey } from 'react-icons/md'
+
 import { Container } from './styles'
 
 function CharacterCard ({ character }) {
-  const { id, name, description } = character;
+  const { id, name, thumbnail } = character;
 
   return (
     <Container>
@@ -11,17 +13,20 @@ function CharacterCard ({ character }) {
         <div className="mc-content">
           <div className="img-container">
             <img className="img-responsive"
-              src="http://i.annihil.us/u/prod/marvel/i/mg/2/60/537bcaef0f6cf.jpg" alt="Character" />
+              src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} />
           </div>
           {/* <div className="mc-description">
             He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
           </div> */}
         </div>
         <footer>
-          <span>Christopher Walken</span>
+          <span>
+            <MdVpnKey size={20} color="#f2db00" />
+            {id}
+          </span>
           <strong>
-            <i className="fa fa-fw fa-star" />
-            The Deer Hunter
+            <MdAccountCircle size={20} color="#f2db00" />
+            {name}
           </strong>
         </footer>
       </article>
@@ -33,8 +38,11 @@ CharacterCard.propTypes = {
   character: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
-    description: PropTypes.string
-  })
+    thumbnail: PropTypes.shape({
+      path: PropTypes.string.isRequired,
+      extension: PropTypes.string.isRequired
+    })
+  }).isRequired
 }
 
 export default CharacterCard

@@ -20,18 +20,18 @@ export const Container = styled.div`
   article {
 
     footer {
-        position: absolute;
-        width: 100%;
-        padding: 10px;
-        color: #fff;
-        font-size: 1.4em;
-        line-height: 1.6em;
-        background-color: #d5171c;
-        width: 15.1em;
-        margin-left:-17px;
-        margin-top: -145px;
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 5px;
+      position: absolute;
+      width: 100%;
+      padding: 10px;
+      color: #fff;
+      font-size: 1.4em;
+      line-height: 1.6em;
+      background-color: #d5171c;
+      width: 15.1em;
+      margin-left:-17px;
+      margin-top: -94px;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
 
       &:before {
         content: ' ';
@@ -53,17 +53,15 @@ export const Container = styled.div`
         border-left-color: transparent;
       }
 
-      span {
-        display: block;
-      }
-
-      strong {
+      span, strong {
+        display: flex;
+        align-items: center;
         font-weight: 400;
         display: block;
         font-size: 0.8em;
 
-        &:before &:after {
-          box-sizing: border-box;
+        svg {
+          margin-right: 5px;
         }
       }
     }
@@ -71,8 +69,8 @@ export const Container = styled.div`
     .mc-content {
       .img-container {
         .img-responsive {
-          height: 20rem;
-          width: 20em;
+          height: 19.9rem;
+          width: 19.8em;
           border-radius: 5px;
         }
       }
