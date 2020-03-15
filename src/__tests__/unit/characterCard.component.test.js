@@ -33,7 +33,7 @@ describe('CharactedCard component', () => {
   test('should redirect to character detail page', async () => {
     const { container } = mountContainerWithRouter(
       <CharacterCard {...props} />,
-      { characters: characters.data.results }
+      { characters }
     );
 
     const characterName = 'wolverine';
