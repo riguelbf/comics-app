@@ -5,14 +5,14 @@ import { mountContainerWithRouter } from '../helpers/containerWithRouter'
 
 import CharacterCard from "../../components/CharacterCard";
 
-import character from '../stubs/character-detail-data-result.json'
+import characters from '../stubs/character-detail-data-result.json'
 
 describe('CharactedCard component', () => {
 
   let props = {};
 
   beforeEach(() => {
-    const characterItem = character.data.results[0];
+    const characterItem = characters.data.results[0];
     props = { character: characterItem };
   });
 
@@ -31,7 +31,10 @@ describe('CharactedCard component', () => {
   });
 
   test('should redirect to character detail page', async () => {
-    const { container } = mountContainerWithRouter(< CharacterCard {...props} />);
+    const { container } = mountContainerWithRouter(
+      <CharacterCard {...props} />,
+      { characters: characters.data.results }
+    );
 
     const characterName = 'wolverine';
 

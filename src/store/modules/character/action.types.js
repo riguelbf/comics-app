@@ -1,3 +1,9 @@
 export const Types = {
-  LOAD: '@character/load'
+  FETCH_CHARACTERS: '@character/FETCH_CHARACTERS'
+}
+
+export function fetchCharacters () {
+  return {
+    type: Types.FETCH_CHARACTERS
+  }
 }

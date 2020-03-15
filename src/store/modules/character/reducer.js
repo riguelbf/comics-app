@@ -6,7 +6,7 @@ export const INITIAL_STATE = characters;
 export default function reducer (state = INITIAL_STATE, action) {
 
   switch (action.type) {
-    case Types.LOAD:
+    case Types.FETCH_CHARACTERS:
       return state;
 
     default:
