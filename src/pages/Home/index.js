@@ -11,10 +11,13 @@ export default function Home () {
   const dispatch = useDispatch();
   const characters = useSelector(state => state.characters.data.results);
 
-  useEffect(() => {
+  function handleFetchCharacters () {
     dispatch(fetchCharacters());
-  }, [])
+  }
 
+  useEffect(() => {
+    handleFetchCharacters();
+  });
 
   return (
     <Container>

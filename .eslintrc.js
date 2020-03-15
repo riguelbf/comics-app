@@ -24,7 +24,8 @@ module.exports = {
   },
   plugins: [
     'react',
-    'jest'
+    'jest',
+    "react-hooks"
   ],
   rules: {
     'prettier/prettier': 'error',
@@ -38,6 +39,7 @@ module.exports = {
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error"
+    "jest/valid-expect": "error",
+    "react-hooks/exhaustive-deps": "off"
   },
 };
