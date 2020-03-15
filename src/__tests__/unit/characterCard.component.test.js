@@ -1,7 +1,8 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
-
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { mountContainerWithRouter } from '../helpers/containerWithRouter'
+
 import CharacterCard from "../../components/CharacterCard";
 
 import character from '../stubs/character-detail-data-result.json'
@@ -20,8 +21,6 @@ describe('CharactedCard component', () => {
   });
 
   test('should to render', () => {
-
-
     const { container } = render(
       <MemoryRouter>
         <CharacterCard {...props} />
@@ -30,4 +29,14 @@ describe('CharactedCard component', () => {
 
     expect(container).toBeDefined();
   });
+
+  test('should redirect to character detail page', async () => {
+    const { container } = mountContainerWithRouter(< CharacterCard {...props} />);
+
+    const characterName = 'wolverine';
+
+    fireEvent.click(container.querySelector('article'), characterName);
+
+    expect(container.innerHTML).toMatch("Detail page");
+  })
 })

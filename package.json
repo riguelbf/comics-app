@@ -60,7 +60,8 @@
       "<rootDir>/**/__tests__/**/*.test.js"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/src/__tests__/stubs"
+      "<rootDir>/src/__tests__/stubs",
+      "<rootDir>/src/__tests__/helpers"
     ],
     "moduleNameMapper": {
       "ˆ~/(.*)": "<rootDir>/src/$1"

@@ -1,15 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { MdAccountCircle, MdVpnKey } from 'react-icons/md'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { MdAccountCircle, MdVpnKey } from 'react-icons/md';
 
-import { Container } from './styles'
+import { useHistory } from 'react-router-dom';
+import { Container } from './styles';
 
 function CharacterCard ({ character }) {
   const { id, name, thumbnail } = character;
 
+  const history = useHistory();
+
+  function handleRedirectToDetailt (name) {
+    history.push({
+      pathname: `/character/${name}`,
+      // search: `?characterName=${name}`,
+      // state: { characterName: name }
+    })
+  }
+
+
   return (
     <Container>
-      <article>
+      <article onClick={() => handleRedirectToDetailt(name)} >
         <div className="mc-content">
           <div className="img-container">
             <img className="img-responsive"
