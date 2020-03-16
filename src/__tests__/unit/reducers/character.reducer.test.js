@@ -1,6 +1,6 @@
 import reducer, { INITIAL_STATE } from "../../../store/modules/character/reducer";
-import * as  CharacterActions from '../../../store/modules/character/action.types'
-import characters from '../../stubs/characters.data.result.json';
+import * as  CharacterActions from '../../../store/modules/character/actions'
+import characters from '../../stubs/characters.data.result.json'
 
 describe('Character reducer', () => {
   test('should to get characters', () => {

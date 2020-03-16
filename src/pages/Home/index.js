@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchCharacters } from '../../store/modules/character/action.types';
+import { fetchCharacters } from '../../store/modules/character/actions';
 
 import { Container } from './styles';
 import CharactersList from "../../components/CharactersList";

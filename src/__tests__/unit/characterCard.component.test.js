@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { mountContainerWithRouter } from '../helpers/containerWithRouter'
+import { mountContainerWithRouter } from '../helpers/containerWithRouter';
 
 import CharacterCard from "../../components/CharacterCard";
 
-import characters from '../stubs/character-detail-data-result.json'
+import characters from '../stubs/character-detail-data-result.json';
 
 describe('CharactedCard component', () => {
 
@@ -17,7 +17,7 @@ describe('CharactedCard component', () => {
   });
 
   afterEach(() => {
-    cleanup()
+    cleanup();
   });
 
   test('should to render', () => {
@@ -41,5 +41,5 @@ describe('CharactedCard component', () => {
     fireEvent.click(container.querySelector('article'), characterName);
 
     expect(container.innerHTML).toMatch("Detail page");
-  })
-})
+  });
+});
