@@ -2,6 +2,8 @@
 
  **[CircleCI](https://app.circleci.com/pipelines/github/riguelbf/comics-app)**
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b47b1a89-2989-48fe-8048-c279ae326c79/deploy-status)](https://app.netlify.com/sites/silly-hermann-a6437e/deploys)
+
 ![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/riguelbf/comics-app/master?style=for-the-badge)
 
 ![CircleCI](https://img.shields.io/circleci/build/gh/riguelbf/comics-app/master?style=for-the-badge)
