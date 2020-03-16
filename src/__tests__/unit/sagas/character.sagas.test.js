@@ -1,6 +1,6 @@
 import { runSaga } from 'redux-saga';
 import { fetchCharacters } from '../../../store/modules/character/sagas';
-import { fetchCharactersSuccess } from '../../../store/modules/character/actions';
+import { fetchCharactersSuccess, fetchCharactersError } from '../../../store/modules/character/actions';
 
 import { API_KEY, HASH, TIME_STAMP } from '../../../config';
 
@@ -16,4 +16,17 @@ describe('Character sagas', () => {
 
     expect(dispatch).toHaveBeenCalledWith(fetchCharactersSuccess(characters));
   });
+
+
+  test('should have a error when to fetch characters list', async () => {
+    const dispatch = jest.fn();
+    axiosMock.onGet(`/characters?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`).reply(500);
+
+    await runSaga({ dispatch }, fetchCharacters).toPromise();
+
+    expect(dispatch).toHaveBeenCalledWith(fetchCharactersError());
+  });
+
+
+
 });
