@@ -1,9 +1,9 @@
 import { all } from 'redux-saga/effects';
 
-import { fetchCharacters } from "./character/sagas";
+import characterSagas from "./character/sagas";
 
 export default function* rootSaga () {
   yield all([
-    fetchCharacters
+    characterSagas
   ]);
 }

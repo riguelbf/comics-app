@@ -1,7 +1,10 @@
 import { Types } from './actions';
-import characters from '../../../__tests__/stubs/characters.data.result.json';
 
-export const INITIAL_STATE = characters;
+export const INITIAL_STATE = {
+  data: {
+    results: []
+  }
+};
 
 export default function reducer (state = INITIAL_STATE, action) {
 
@@ -10,10 +13,7 @@ export default function reducer (state = INITIAL_STATE, action) {
       return state;
 
     case Types.FETCH_CHARACTERS_SUCCESS:
-      return {
-        ...state,
-        characters: action.characters
-      };
+      return { data: action.characters.data };
 
     default:
       return INITIAL_STATE;

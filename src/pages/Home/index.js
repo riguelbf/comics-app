@@ -17,11 +17,11 @@ export default function Home () {
 
   useEffect(() => {
     handleFetchCharacters();
-  });
+  }, []);
 
   return (
     <Container>
       <CharactersList characters={characters} />
     </Container>
-  )
+  );
 }

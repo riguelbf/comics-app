@@ -19,7 +19,7 @@
     "styled-components": "^5.0.1"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "react-app-rewired start .env.local",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --no-watch",
     "test-debug": "react-scripts --inspect-brk test --env=jsdom --runInBand",

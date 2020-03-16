@@ -7,7 +7,7 @@ import * as CharacterActions from './actions';
 export function* fetchCharacters () {
 
   try {
-    const response = yield call(request.get, `/characters?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`);
+    const response = yield call(request.get, `/characters?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}&offset=5`);
     yield put(CharacterActions.fetchCharactersSuccess(response.data));
   } catch (e) {
     yield put(CharacterActions.fetchCharactersError());
