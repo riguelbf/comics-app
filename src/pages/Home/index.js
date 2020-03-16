@@ -15,6 +15,7 @@ export default function Home () {
     dispatch(fetchCharacters());
   }
 
+  // eslint-disable-next-line
   useEffect(() => {
     handleFetchCharacters();
   }, []);

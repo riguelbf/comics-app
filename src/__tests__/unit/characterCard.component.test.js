@@ -21,11 +21,7 @@ describe('CharactedCard component', () => {
   });
 
   test('should to render', () => {
-    const { container } = render(
-      <MemoryRouter>
-        <CharacterCard {...props} />
-      </MemoryRouter>
-    );
+    const { container } = mountContainerWithRouter(<CharacterCard {...props} />);
 
     expect(container).toBeDefined();
   });
