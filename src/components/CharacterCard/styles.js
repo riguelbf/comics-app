@@ -17,9 +17,7 @@ export const Container = styled.div`
     }
   }
 
-  article {
-
-    footer {
+aside {
       position: absolute;
       width: 100%;
       padding: 10px;
@@ -65,20 +63,4 @@ export const Container = styled.div`
         }
       }
     }
-
-    .mc-content {
-      .img-container {
-        .img-responsive {
-          height: 19.9rem;
-          width: 19.8em;
-          border-radius: 5px;
-        }
-      }
-
-      .mc-description {
-
-      }
-    }
-  }
-
 `;

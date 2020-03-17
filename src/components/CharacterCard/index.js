@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { MdAccountCircle, MdVpnKey } from 'react-icons/md';
 
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Avatar from '../Avatar';
 import { Container } from './styles';
 
 import * as CharacterActions from '../../store/modules/character/actions';
@@ -19,35 +21,26 @@ function CharacterCard ({ character }) {
 
     history.push({
       pathname: `/character/${character.name}`,
-      // search: `?characterName=${name}`,
-      // state: { characterName: name }
     });
   }
 
-
   return (
     <Container>
-      <article onClick={() => handleRedirectToDetail()} >
-        <div className="mc-content">
-          <div className="img-container">
-            <img className="img-responsive"
-              src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
-          </div>
-          {/* <div className="mc-description">
-            He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
-          </div> */}
-        </div>
-        <footer>
-          <span>
-            <MdVpnKey size={20} color="#f2db00" />
-            {character.id}
-          </span>
-          <strong>
-            <MdAccountCircle size={20} color="#f2db00" />
-            {character.name}
-          </strong>
-        </footer>
-      </article>
+      <Avatar
+        thumbnail={character.thumbnail}
+        name={character.name}
+        handleClick={() => handleRedirectToDetail()}
+      />
+      <aside>
+        <span>
+          <MdVpnKey size={20} color="#f2db00" />
+          {character.id}
+        </span>
+        <strong>
+          <MdAccountCircle size={20} color="#f2db00" />
+          {character.name}
+        </strong>
+      </aside>
     </Container>
   );
 }

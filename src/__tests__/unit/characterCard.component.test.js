@@ -27,14 +27,14 @@ describe('CharactedCard component', () => {
   });
 
   test('should redirect to character detail page', async () => {
-    const { container } = mountContainerWithRouter(
+    const { container, getByTestId } = mountContainerWithRouter(
       <CharacterCard {...props} />,
       { characters }
     );
 
     const characterName = 'wolverine';
 
-    fireEvent.click(container.querySelector('article'), characterName);
+    fireEvent.click(getByTestId('avatar'), characterName);
 
     expect(container.innerHTML).toMatch("Detail page");
   });
