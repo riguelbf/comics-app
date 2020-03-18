@@ -5,17 +5,17 @@ import Home from './pages/Home';
 import CharacterDetail from './pages/Detail';
 
 export const routes = [
-  <Route path="/" exact component={Home} />,
-  <Route path="/character/:name" component={CharacterDetail} />
+
 ];
 
 export default function Routes () {
   return (
     <BrowserRouter>
       <Switch>
-        {routes.map(route => route)}
+        <Route path="/" exact component={Home} />,
+  <Route path="/character/:name" component={CharacterDetail} />
       </Switch>
     </BrowserRouter>
-  )
+  );
 }
 
