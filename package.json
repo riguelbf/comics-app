@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start .env.local",
-    "build": "react-app-rewired build",
+    "build": "react-app-rewired build --define process.env.NODE_ENV='\"production\"'",
     "test": "react-app-rewired test --no-watch",
     "test-debug": "react-scripts --inspect-brk test --env=jsdom --runInBand",
     "test-coverage": "react-app-rewired test --env=jsdom --coverage --collectCoverageFrom=src/**/*.js",
