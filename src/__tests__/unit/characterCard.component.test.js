@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent } from '@testing-library/react';
+import { cleanup } from '@testing-library/react';
 import { mountContainerWithRouter } from '../helpers/containerWithRouter';
 
 import CharacterCard from "../../components/CharacterCard";
@@ -23,20 +23,5 @@ describe('CharactedCard component', () => {
     const { container } = mountContainerWithRouter(<CharacterCard {...props} />);
 
     expect(container).toBeDefined();
-  });
-
-  test('should redirect to character detail page', async () => {
-    const { container, getByTestId } = mountContainerWithRouter(
-      <CharacterCard {...props} />,
-      { characters }
-    );
-
-    const characterName = 'wolverine';
-
-    fireEvent.click(getByTestId('avatar'), characterName);
-
-    expect(container.querySelector('img')).toBeDefined();
-    expect(container.querySelector('header')).toBeDefined();
-    expect(container.querySelector('aside')).toBeDefined();
   });
 });

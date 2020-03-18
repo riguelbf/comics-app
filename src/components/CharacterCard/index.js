@@ -20,7 +20,7 @@ function CharacterCard ({ character }) {
     dispatch(CharacterActions.addSelectedCharacter({ ...character }));
 
     history.push({
-      pathname: `/character/${character.name}`,
+      pathname: `/character/${character.id}`,
     });
   }
 

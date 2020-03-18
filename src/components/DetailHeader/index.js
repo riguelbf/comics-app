@@ -1,50 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { MdEdit, MdVpnKey } from 'react-icons/md';
 import { Container } from './styles';
 import Avatar from '../Avatar';
 
-function DetailHeader ({ id, name, thumbnail, modified }) {
+import * as  CharacterActions from '../../store/modules/character/actions';
+
+function DetailHeader () {
+
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const selectedCharacter = useSelector(state => state.characters.selectedCharacter);
+
+  function handleGetCharacterDetail () {
+    dispatch(CharacterActions.fetchCharacterDetail(id));
+  }
+
+  /* eslint-disabled */
+  useEffect(() => {
+    handleGetCharacterDetail();
+  }, []);
+
   return (
     <Container>
       <header />
-      <div>
-        <Avatar
-          name={name}
-          thumbnail={thumbnail}
-        />
-        <aside>
-          <h1>{name}</h1>
-          <span>
-            <MdVpnKey />
-            {id}
-          </span>
-          <span>{`Last modified on: ${modified}`}</span>
-        </aside>
-        <MdEdit size="60" />
-      </div>
+      {
+        selectedCharacter && (
+          <div>
+            <Avatar
+              name={selectedCharacter.name}
+              thumbnail={selectedCharacter.thumbnail}
+            />
+            <aside>
+              <h1>{selectedCharacter.name}</h1>
+              <span>
+                <MdVpnKey />
+                {selectedCharacter.id}
+              </span>
+              <span>{`Last modified on: ${selectedCharacter.modified}`}</span>
+            </aside>
+            <MdEdit size="60" />
+          </div>
+        )
+      }
     </Container>
   );
 }
-
-DetailHeader.defaultProps = {
-  id: 9999,
-  name: 'Comics fake',
-  thumbnail: {
-    path: 'http://i.annihil.us/u/prod/marvel/i/mg/6/00/5239c3b29cb40',
-    extension: 'jpg'
-  },
-  modified: new Date().toDateString()
-};
-
-DetailHeader.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  thumbnail: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-    extension: PropTypes.string.isRequired
-  }).isRequired
-};
 
 export default DetailHeader;

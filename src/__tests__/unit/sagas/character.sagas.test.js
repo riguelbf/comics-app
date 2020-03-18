@@ -1,32 +1,49 @@
 import { runSaga } from 'redux-saga';
-import { fetchCharacters } from '../../../store/modules/character/sagas';
-import { fetchCharactersSuccess, fetchCharactersError } from '../../../store/modules/character/actions';
+import { fetchCharacters, fetchCharacterDetail } from '../../../store/modules/character/sagas';
+import { fetchCharactersSuccess, fetchCharactersError, fetchCharacterDetailSuccess } from '../../../store/modules/character/actions';
 
 import { API_KEY, HASH, TIME_STAMP } from '../../../config';
 
 import { axiosMock } from '../../helpers/axiosMock';
 import characters from '../../stubs/characters.data.result.json';
+import characterDetail from '../../stubs/character-detail-data-result.json';
 
 describe('Character sagas', () => {
+
+  let axiosMocked = {};
+
+  beforeEach(() => {
+    axiosMocked = axiosMock;
+  });
+
   test('should to fetch characters list', async () => {
     const dispatch = jest.fn();
-    axiosMock.onGet(`/characters?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`).reply(200, characters);
+    axiosMocked.onGet(`/characters?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`).reply(200, characters);
 
     await runSaga({ dispatch }, fetchCharacters).toPromise();
 
     expect(dispatch).toHaveBeenCalledWith(fetchCharactersSuccess(characters));
   });
 
-
   test('should have a error when to fetch characters list', async () => {
     const dispatch = jest.fn();
-    axiosMock.onGet(`/characters?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`).reply(500);
+    axiosMocked.onGet(`/characters?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`).reply(500);
 
     await runSaga({ dispatch }, fetchCharacters).toPromise();
 
     expect(dispatch).toHaveBeenCalledWith(fetchCharactersError());
   });
 
+  test('should to get charater info details', async () => {
+    const characterId = 1010729;
+    const dispatch = jest.fn();
 
+    axiosMocked
+      .onGet(`/characters/${characterId}?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`)
+      .reply(200, characterDetail);
 
+    await runSaga({ dispatch }, fetchCharacterDetail, { characterId }).toPromise();
+
+    expect(dispatch).toHaveBeenCalledWith(fetchCharacterDetailSuccess(characterDetail));
+  });
 });

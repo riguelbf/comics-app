@@ -4,7 +4,14 @@ export const INITIAL_STATE = {
   data: {
     results: []
   },
-  selectedCharacter: {}
+  selectedCharacter: {
+    id: 0,
+    name: '',
+    thumbnail: {
+      path: '',
+      extension: ''
+    }
+  }
 };
 
 export default function reducer (state = INITIAL_STATE, action) {
@@ -22,6 +29,15 @@ export default function reducer (state = INITIAL_STATE, action) {
       return {
         ...state,
         selectedCharacter: action.selectedCharacter
+      };
+
+    case Types.FETCH_CHARACTER_DETAIL:
+      return { characterId: action.charactersId };
+
+    case Types.FETCH_CHARACTER_DETAIL_SUCCESS:
+      return {
+        ...state,
+        selectedCharacter: action.response.data.results[0]
       };
 
     default:
