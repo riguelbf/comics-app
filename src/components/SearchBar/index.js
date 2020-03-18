@@ -1,8 +1,8 @@
 import React from 'react';
-import PropType from 'prop-types'
+import PropType from 'prop-types';
 
 import { MdSearch } from 'react-icons/md';
-import { Container } from './styles'
+import { Container } from './styles';
 
 function SearchBar ({ handleSearch }) {
   return (
@@ -19,11 +19,11 @@ function SearchBar ({ handleSearch }) {
         <MdSearch />
       </button>
     </Container>
-  )
+  );
 }
 
 SearchBar.propTypes = {
   handleSearch: PropType.func.isRequired
-}
+};
 
 export default SearchBar;

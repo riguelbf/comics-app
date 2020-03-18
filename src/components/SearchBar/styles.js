@@ -45,7 +45,6 @@ input {
     transition: 0.4s;
     line-height: 40px;
     width: 0px;
-/* width: 240px; */
 }
 
 @media screen and (max-width: 620px) {
