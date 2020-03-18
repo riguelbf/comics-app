@@ -7,7 +7,7 @@ import SerieCard from '../SerieCard';
 
 const SeriesList = ({ characterId }) => {
 
-  const [seriesList, setSeriesList] = useState(seriesListStub.data.results);
+  const [seriesList] = useState(seriesListStub.data.results);
 
   return (
     <Container>
