@@ -22,7 +22,7 @@ function DetailHeader ({ id, name, description, thumbnail, modified }) {
           </span>
           <span>{`Last modified on: ${modified}`}</span>
         </aside>
-        <MdEdit size="60" color="" enableBackgrounds />
+        <MdEdit size="60" />
       </div>
     </Container>
   );

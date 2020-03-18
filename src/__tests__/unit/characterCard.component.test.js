@@ -36,6 +36,8 @@ describe('CharactedCard component', () => {
 
     fireEvent.click(getByTestId('avatar'), characterName);
 
-    expect(container.innerHTML).toMatch("Detail page");
+    expect(container.querySelector('img')).toBeDefined();
+    expect(container.querySelector('header')).toBeDefined();
+    expect(container.querySelector('aside')).toBeDefined();
   });
 });
