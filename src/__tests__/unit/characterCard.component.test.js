@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { cleanup, fireEvent } from '@testing-library/react';
 import { mountContainerWithRouter } from '../helpers/containerWithRouter';
 
 import CharacterCard from "../../components/CharacterCard";
