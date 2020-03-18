@@ -20,7 +20,7 @@
     "styled-components": "^5.0.1"
   },
   "scripts": {
-    "start": "react-app-rewired start .env.local",
+    "start": "react-app-rewired start",
     "build": "react-app-rewired build --define process.env.NODE_ENV='\"production\"'",
     "test": "react-app-rewired test --no-watch",
     "test-debug": "react-scripts --inspect-brk test --env=jsdom --runInBand",

@@ -9,8 +9,6 @@ export default function CharacterDetail () {
 
   const character = useSelector(state => state.characters.selectedCharacter);
 
-  console.log(character);
-
   return (
     <Container>
       <DetailHeader />

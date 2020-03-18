@@ -11,16 +11,19 @@ const SeriesList = ({ characterId }) => {
 
   return (
     <Container>
-      {
-        seriesList.map(serie =>
-          <SerieCard
-            key={serie.id}
-            id={serie.id}
-            title={serie.title}
-            startYear={serie.startYear}
-            thumbnail={serie.thumbnail}
-          />)
-      }
+      <h1>Series</h1>
+      <div>
+        {
+          seriesList.map(serie =>
+            <SerieCard
+              key={serie.id}
+              id={serie.id}
+              title={serie.title}
+              startYear={serie.startYear}
+              thumbnail={serie.thumbnail}
+            />)
+        }
+      </div>
     </Container>
   );
 };

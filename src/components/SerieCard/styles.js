@@ -8,6 +8,14 @@ export const Container = styled.div`
   border-radius: 5px;
   margin: 80px 10px 10px 10px;
   flex: auto;
+  -webkit-transition: -webkit-transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  transition: transform 0.3s;
+  -webkit-transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   img {
     height: 13.9rem;

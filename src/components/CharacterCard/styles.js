@@ -11,7 +11,7 @@ export const Container = styled.div`
   -webkit-transition: transform 0.3s;
 
   &:hover {
-    transform: scale(1.25);
+    transform: scale(1.05);
     @include responsive(tab_port) {
       transform: scale(1.15);
     }
