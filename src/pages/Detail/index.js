@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { Container } from './styles';
 import DetailHeader from '../../components/DetailHeader';
-
+import SeriesList from '../../components/SeriesList';
 
 export default function CharacterDetail () {
 
@@ -14,6 +14,7 @@ export default function CharacterDetail () {
   return (
     <Container>
       <DetailHeader />
+      <SeriesList characterId={1011334} />
     </Container>
   );
 }
