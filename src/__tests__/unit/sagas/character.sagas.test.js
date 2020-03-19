@@ -8,6 +8,7 @@ import { axiosMock } from '../../helpers/axiosMock';
 import characters from '../../stubs/characters.data.result.json';
 import characterDetail from '../../stubs/character-detail-data-result.json';
 import seriesList from '../../stubs/character-series-data-result.json';
+import charactersFiltered from '../../stubs/characters.data.filtered.result.json';
 
 describe('Character sagas', () => {
 
@@ -59,5 +60,18 @@ describe('Character sagas', () => {
     await runSaga({ dispatch }, fetchCharacterSeries, { characterId }).toPromise();
 
     expect(dispatch).toHaveBeenCalledWith(fetchCharacterSeriesSuccess(seriesList));
+  });
+
+  test('should to fetch characters list filtered', async () => {
+    const dispatch = jest.fn();
+    const characterName = 'wolv';
+
+    axiosMocked
+      .onGet(`/characters?nameStartsWith=${characterName}&apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`)
+      .reply(200, charactersFiltered);
+
+    await runSaga({ dispatch }, fetchCharacters, { characterName }).toPromise();
+
+    expect(dispatch).toHaveBeenCalledWith(fetchCharactersSuccess(charactersFiltered));
   });
 });

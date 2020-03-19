@@ -4,9 +4,11 @@ import request from '../../../services/request';
 
 import * as CharacterActions from './actions';
 
-export function* fetchCharacters () {
+export function* fetchCharacters (action) {
   try {
-    const response = yield call(request.get, `/characters?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`);
+    const name = action && action.characterName;
+    const characterNameParameter = name ? `nameStartsWith=${name}&` : '';
+    const response = yield call(request.get, `/characters?${characterNameParameter}apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`);
     yield put(CharacterActions.fetchCharactersSuccess(response.data));
   } catch (e) {
     yield put(CharacterActions.fetchCharactersError());
@@ -18,7 +20,6 @@ export function* fetchCharacterDetail ({ characterId }) {
     const response = yield call(request.get, `/characters/${characterId}?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`);
     yield put(CharacterActions.fetchCharacterDetailSuccess(response.data));
   } catch (e) {
-
     yield put(CharacterActions.fetchCharactersError());
   }
 }
@@ -34,6 +35,7 @@ export function* fetchCharacterSeries ({ characterId }) {
 
 export default all([
   takeLatest(CharacterActions.Types.FETCH_CHARACTERS, fetchCharacters),
+  takeLatest(CharacterActions.Types.FETCH_CHARACTERS_FILTERED, fetchCharacters),
   takeLatest(CharacterActions.Types.FETCH_CHARACTER_DETAIL, fetchCharacterDetail),
   takeLatest(CharacterActions.Types.FETCH_CHARACTER_SERIES, fetchCharacterSeries),
 ]);

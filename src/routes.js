@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import CharacterDetail from './pages/Detail';
@@ -11,11 +11,9 @@ export const routes = [
 
 export default function Routes () {
   return (
-    <BrowserRouter>
-      <Switch>
-        {routes.map(route => route)}
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      {routes.map(route => route)}
+    </Switch>
   );
 }
 

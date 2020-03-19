@@ -1,5 +1,6 @@
 export const Types = {
   FETCH_CHARACTERS: '@character/FETCH_CHARACTERS',
+  FETCH_CHARACTERS_FILTERED: '@character/FETCH_CHARACTERS_FILTERED',
   FETCH_CHARACTERS_SUCCESS: '@character/FETCH_CHARACTERS_SUCCESS',
   FETCH_CHARACTERS_ERROR: '@character/FETCH_CHARACTERS_ERROR',
   ADD_SELECTED_CHARACTER: '@character/ADD_SELECTED_CHARACTER',
@@ -9,9 +10,10 @@ export const Types = {
   FETCH_CHARACTER_SERIES_SUCCESS: '@character/FETCH_CHARACTER_SERIES_SUCCESS',
 };
 
-export function fetchCharacters () {
+export function fetchCharacters (characterName) {
   return {
-    type: Types.FETCH_CHARACTERS
+    type: Types.FETCH_CHARACTERS,
+    characterName
   };
 }
 

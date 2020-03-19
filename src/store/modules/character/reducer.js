@@ -23,8 +23,14 @@ export default function reducer (state = INITIAL_STATE, action) {
         ...state
       };
 
+    case Types.FETCH_CHARACTERS_FILTERED:
+      return action.characterName;
+
     case Types.FETCH_CHARACTERS_SUCCESS:
-      return { data: action.characters.data };
+      return {
+        ...state,
+        data: action.characters.data
+      };
 
     case Types.ADD_SELECTED_CHARACTER:
       return {
