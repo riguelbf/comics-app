@@ -25,7 +25,20 @@ export function* fetchCharacterDetail ({ characterId }) {
   }
 }
 
+export function* fetchCharacterSeries ({ characterId }) {
+  console.log('sagas', characterId);
+  try {
+    const response = yield call(request.get, `/characters/${characterId}/series?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`);
+    yield put(CharacterActions.fetchCharacterSeriesSuccess(response.data));
+  } catch (e) {
+    console.log(e);
+
+    yield put(CharacterActions.fetchCharactersError());
+  }
+}
+
 export default all([
   takeLatest(CharacterActions.Types.FETCH_CHARACTERS, fetchCharacters),
   takeLatest(CharacterActions.Types.FETCH_CHARACTER_DETAIL, fetchCharacterDetail),
+  takeLatest(CharacterActions.Types.FETCH_CHARACTER_SERIES, fetchCharacterSeries),
 ]);

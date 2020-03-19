@@ -1,12 +1,13 @@
 import { runSaga } from 'redux-saga';
-import { fetchCharacters, fetchCharacterDetail } from '../../../store/modules/character/sagas';
-import { fetchCharactersSuccess, fetchCharactersError, fetchCharacterDetailSuccess } from '../../../store/modules/character/actions';
+import { fetchCharacters, fetchCharacterDetail, fetchCharacterSeries } from '../../../store/modules/character/sagas';
+import { fetchCharactersSuccess, fetchCharactersError, fetchCharacterDetailSuccess, fetchCharacterSeriesSuccess } from '../../../store/modules/character/actions';
 
 import { API_KEY, HASH, TIME_STAMP } from '../../../config';
 
 import { axiosMock } from '../../helpers/axiosMock';
 import characters from '../../stubs/characters.data.result.json';
 import characterDetail from '../../stubs/character-detail-data-result.json';
+import seriesList from '../../stubs/character-series-data-result.json';
 
 describe('Character sagas', () => {
 
@@ -45,5 +46,18 @@ describe('Character sagas', () => {
     await runSaga({ dispatch }, fetchCharacterDetail, { characterId }).toPromise();
 
     expect(dispatch).toHaveBeenCalledWith(fetchCharacterDetailSuccess(characterDetail));
+  });
+
+  test('should to get series list of character', async () => {
+    const characterId = 1010729;
+    const dispatch = jest.fn();
+
+    axiosMocked
+      .onGet(`/characters/${characterId}/series?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`)
+      .reply(200, seriesList);
+
+    await runSaga({ dispatch }, fetchCharacterSeries, { characterId }).toPromise();
+
+    expect(dispatch).toHaveBeenCalledWith(fetchCharacterSeriesSuccess(seriesList));
   });
 });

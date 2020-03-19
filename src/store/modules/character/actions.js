@@ -5,6 +5,8 @@ export const Types = {
   ADD_SELECTED_CHARACTER: '@character/ADD_SELECTED_CHARACTER',
   FETCH_CHARACTER_DETAIL: '@character/FETCH_CHARACTER_DETAIL',
   FETCH_CHARACTER_DETAIL_SUCCESS: '@character/FETCH_CHARACTER_DETAIL_SUCCESS',
+  FETCH_CHARACTER_SERIES: '@character/FETCH_CHARACTER_SERIES',
+  FETCH_CHARACTER_SERIES_SUCCESS: '@character/FETCH_CHARACTER_SERIES_SUCCESS',
 };
 
 export function fetchCharacters () {
@@ -43,6 +45,20 @@ export function fetchCharacterDetail (characterId) {
 export function fetchCharacterDetailSuccess (response) {
   return {
     type: Types.FETCH_CHARACTER_DETAIL_SUCCESS,
+    response
+  };
+}
+
+export function fetchCharacterSeries (characterId) {
+  return {
+    type: Types.FETCH_CHARACTER_SERIES,
+    characterId
+  };
+}
+
+export function fetchCharacterSeriesSuccess (response) {
+  return {
+    type: Types.FETCH_CHARACTER_SERIES_SUCCESS,
     response
   };
 }
