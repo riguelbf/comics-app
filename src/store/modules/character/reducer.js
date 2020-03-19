@@ -11,7 +11,8 @@ export const INITIAL_STATE = {
       path: '',
       extension: ''
     }
-  }
+  },
+  seriesList: []
 };
 
 export default function reducer (state = INITIAL_STATE, action) {
@@ -38,6 +39,16 @@ export default function reducer (state = INITIAL_STATE, action) {
       return {
         ...state,
         selectedCharacter: action.response.data.results[0]
+      };
+
+    case Types.FETCH_CHARACTER_SERIES:
+      return { characterId: action.charactersId };
+
+
+    case Types.FETCH_CHARACTER_SERIES_SUCCESS:
+      return {
+        ...state,
+        seriesList: action.response.data.results
       };
 
     default:
