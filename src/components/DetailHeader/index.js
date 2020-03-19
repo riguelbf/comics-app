@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import { MdEdit, MdVpnKey } from 'react-icons/md';
 import { Container } from './styles';
@@ -19,7 +18,7 @@ function DetailHeader () {
     dispatch(CharacterActions.fetchCharacterDetail(id));
   }
 
-  /* eslint-disabled */
+  /*eslint-disable */
   useEffect(() => {
     handleGetCharacterDetail();
   }, []);

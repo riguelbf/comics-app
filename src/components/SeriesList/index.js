@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import seriesListStub from '../../__tests__/stubs/character-series-data-result.json';
 
 import { Container } from './styles';
 import SerieCard from '../SerieCard';
 
-const SeriesList = ({ characterId }) => {
-
-  const [seriesList] = useState(seriesListStub.data.results);
+const SeriesList = ({ seriesList }) => {
 
   return (
     <Container>
       <h1>Series</h1>
       <div>
         {
-          seriesList.map(serie =>
+          seriesList && seriesList.map(serie =>
             <SerieCard
               key={serie.id}
               id={serie.id}
@@ -29,11 +26,21 @@ const SeriesList = ({ characterId }) => {
 };
 
 SeriesList.defaultPropTypes = {
-  characterId: 1011334
+  seriesList: []
 };
 
 SeriesList.propTypes = {
-  characterId: PropTypes.number.isRequired
+  // eslint-disable-next-line react/require-default-props
+  seriesList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    startYear: PropTypes.number.isRequired,
+    thumbnail: PropTypes.shape({
+      path: PropTypes.string.isRequired,
+      extension: PropTypes.string.isRequired,
+    })
+  }
+  ))
 };
 
 export default SeriesList;

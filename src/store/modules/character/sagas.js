@@ -14,25 +14,20 @@ export function* fetchCharacters () {
 }
 
 export function* fetchCharacterDetail ({ characterId }) {
-  console.log('sagas', characterId);
   try {
     const response = yield call(request.get, `/characters/${characterId}?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`);
     yield put(CharacterActions.fetchCharacterDetailSuccess(response.data));
   } catch (e) {
-    console.log(e);
 
     yield put(CharacterActions.fetchCharactersError());
   }
 }
 
 export function* fetchCharacterSeries ({ characterId }) {
-  console.log('sagas', characterId);
   try {
     const response = yield call(request.get, `/characters/${characterId}/series?apikey=${API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`);
     yield put(CharacterActions.fetchCharacterSeriesSuccess(response.data));
   } catch (e) {
-    console.log(e);
-
     yield put(CharacterActions.fetchCharactersError());
   }
 }
