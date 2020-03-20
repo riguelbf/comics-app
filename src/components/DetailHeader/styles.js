@@ -48,6 +48,8 @@ export const Container = styled.div`
         margin-right: 40px;
         border: 10px solid #191920;
         transition: 0.4s;
+        cursor: pointer;
+
 
         &:hover {
           border: none;

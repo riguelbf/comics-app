@@ -9,7 +9,7 @@ import Character from './pages/Character';
 export const routes = [
   <Route path="/" exact component={Home} />,
   <Route path="/character/:id" exact component={CharacterDetail} />,
-  <Route path="/character/:id/edit" exact component={Character} />
+  <Route path="/character/:characterId/edit" exact component={Character} />
 ];
 
 export default function Routes () {
