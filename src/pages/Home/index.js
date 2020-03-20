@@ -6,6 +6,7 @@ import { fetchCharacters } from '../../store/modules/character/actions';
 
 import { Wrapper } from './styles';
 import CharactersList from "../../components/CharactersList";
+import ProgressBar from '../../components/Loader';
 
 export default function Home () {
 
@@ -24,6 +25,7 @@ export default function Home () {
 
   return (
     <Wrapper>
+      <ProgressBar />
       <CharactersList characters={characters} />
     </Wrapper>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Container } from './styles';
-import CharacterCard from "../CharacterCard"
+import CharacterCard from "../CharacterCard";
 
 function CharactersList ({ characters }) {
 
@@ -12,7 +12,7 @@ function CharactersList ({ characters }) {
         characters.map(character => <CharacterCard key={character.id} character={character} />)
       }
     </Container>
-  )
+  );
 }
 
 CharactersList.propTypes = {
@@ -21,6 +21,6 @@ CharactersList.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired
   })).isRequired
-}
+};
 
 export default CharactersList;
