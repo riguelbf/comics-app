@@ -7,9 +7,15 @@ export const INITIAL_STATE = {
   selectedCharacter: {
     id: 0,
     name: '',
+    description: '',
+    modified: '',
     thumbnail: {
       path: '',
       extension: ''
+    },
+    resourceURI: '',
+    series: {
+      collectionURI: ''
     }
   },
   seriesList: []
@@ -39,7 +45,10 @@ export default function reducer (state = INITIAL_STATE, action) {
       };
 
     case Types.FETCH_CHARACTER_DETAIL:
-      return { characterId: action.charactersId };
+      return {
+        ...state,
+        characterId: action.charactersId
+      };
 
     case Types.FETCH_CHARACTER_DETAIL_SUCCESS:
       return {
@@ -48,7 +57,10 @@ export default function reducer (state = INITIAL_STATE, action) {
       };
 
     case Types.FETCH_CHARACTER_SERIES:
-      return { characterId: action.charactersId };
+      return {
+        ...state,
+        characterId: action.charactersId
+      };
 
 
     case Types.FETCH_CHARACTER_SERIES_SUCCESS:
