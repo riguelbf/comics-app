@@ -25,7 +25,7 @@
     "build": "react-app-rewired build --define process.env.NODE_ENV='\"production\"'",
     "test": "react-app-rewired test --no-watch",
     "test-debug": "react-scripts --inspect-brk test --env=jsdom --runInBand",
-    "test-coverage": "react-app-rewired test --env=jsdom --coverage --collectCoverageFrom=src/**/*.js",
+    "test-coverage": "react-app-rewired test --watchAll=false --env=jsdom --coverage --collectCoverageFrom=src/**/*.js",
     "eject": "react-scripts eject",
     "netlify-deploy": "netlify deploy --dir=./build -p -m \"$(git log -1 --pretty=%B)\""
   },
@@ -67,8 +67,8 @@
       "<rootDir>/**/__tests__/**/*.test.js"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/src/__tests__/stubs",
-      "<rootDir>/src/__tests__/helpers"
+      "<rootDir>/src/__tests__/stubs/",
+      "<rootDir>/src/__tests__/helpers/"
     ],
     "moduleNameMapper": {
       "ˆ~/(.*)": "<rootDir>/src/$1"
@@ -76,6 +76,9 @@
     "setupFilesAfterEnv": [
       "jest-localstorage-mock",
       "jest-prop-type-error"
+    ],
+    "collectCoverageFrom": [
+      "!<rootDir>/src/**/styles.js"
     ]
   }
 }

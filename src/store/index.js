@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 

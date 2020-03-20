@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { combineReducers } from 'redux';
 
 import CharacterReducer from "./character/reducer";

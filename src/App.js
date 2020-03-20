@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+/* istanbul ignore file */
 import React from 'react';
 import { Router } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';

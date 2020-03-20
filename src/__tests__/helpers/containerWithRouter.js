@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React from "react";
 import configureStore from 'redux-mock-store';
 import { render } from '@testing-library/react';
