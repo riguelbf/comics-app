@@ -16,13 +16,18 @@ export default createGlobalStyle`
   }
 
   html, body, #root {
-    margin-top: 60px;
     height: 100%;
+  }
+
+  #root {
+    min-height:100%;
   }
 
   body {
     -webkit-font-smoothing: antialiased;
     background: #191920;
+    min-height:100%;
+    margin-top: 120px;
   }
 
   body, -moz-user-input, button {
@@ -40,5 +45,14 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
   }
 `;
