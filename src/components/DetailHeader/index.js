@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { MdEdit, MdVpnKey } from 'react-icons/md';
 import { Container } from './styles';
 import Avatar from '../Avatar';
+import ProgressBar from '../Loader';
 
 import * as  CharacterActions from '../../store/modules/character/actions';
 
@@ -12,16 +13,20 @@ function DetailHeader () {
 
   const dispatch = useDispatch();
   const { id } = useParams();
+  const [loading, setLoading] = useState(true);
   const selectedCharacter = useSelector(state => state.characters.selectedCharacter);
 
   function handleGetCharacterDetail () {
     dispatch(CharacterActions.fetchCharacterDetail(id));
+    setLoading(false);
   }
 
   /*eslint-disable */
   useEffect(() => {
     handleGetCharacterDetail();
   }, []);
+
+  if (loading) return <ProgressBar visible={true} />
 
   return (
     <Container>

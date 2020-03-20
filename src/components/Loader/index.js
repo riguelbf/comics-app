@@ -1,24 +1,30 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import Loader from 'react-loader-spinner';
 import { Container } from './styles';
 
-export default function ProgressBar () {
-
-  const showComponent = useSelector(state => state.isLoading);
+function ProgressBar ({ visible }) {
 
   return (
     <Container>
       <Loader
         type="Oval"
         color="#d5171c"
-        height={80}
         width={80}
-        timeout={3000}
-        visible={showComponent}
+        visible={visible}
       />
     </Container>
   );
 }
+
+ProgressBar.defaultProps = {
+  visible: false
+};
+
+ProgressBar.propTypes = {
+  visible: PropTypes.bool
+};
+
+export default ProgressBar;

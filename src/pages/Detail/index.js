@@ -11,7 +11,7 @@ export default function CharacterDetail () {
 
   const dispatch = useDispatch();
   const { id = 1011334 } = useParams();
-  const seriesList = useSelector(state => state.characters.seriesList);
+  const { seriesList } = useSelector(state => state.characters);
 
   function handleFetchSeries () {
     dispatch(CharacterActions.fetchCharacterSeries(id));

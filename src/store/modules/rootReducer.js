@@ -6,7 +6,7 @@ import LoaderReducer from './loader/reducer';
 
 const reducers = combineReducers({
   characters: CharacterReducer,
-  isLoading: LoaderReducer
+  loader: LoaderReducer
 });
 
 export default reducers;

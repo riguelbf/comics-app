@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 
 import { Container } from './styles';
 import SerieCard from '../SerieCard';
+import ProgressBar from '../Loader';
 
 const SeriesList = ({ seriesList }) => {
+
+  const loading = typeof seriesList === 'undefined';
+
+  if (loading) return <ProgressBar visible={loading} />;
 
   return (
     <Container>

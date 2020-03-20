@@ -23,9 +23,12 @@ export default function Home () {
     handleFetchCharacters();
   }, []);
 
+  const loading = characters.length === 0;
+
+  if (loading) return <ProgressBar visible={loading} />;
+
   return (
     <Wrapper>
-      <ProgressBar />
       <CharactersList characters={characters} />
     </Wrapper>
   );
