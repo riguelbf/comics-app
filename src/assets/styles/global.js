@@ -55,4 +55,7 @@ export default createGlobalStyle`
     text-align: center;
     padding: 20px;
   }
+  div[class^="react-toast-notifications__container"] {
+    top: 120px;
+   }
 `;

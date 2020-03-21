@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
 
 import { Form } from "@unform/web";
 import { MdVpnKey } from 'react-icons/md';
@@ -11,10 +12,12 @@ import { Wrapper } from './styles';
 import Avatar from '../../components/Avatar';
 import Input from '../../components/Input';
 
+
 function Character () {
 
   const { characterId } = useParams();
   const dispatch = useDispatch();
+  const { addToast } = useToasts();
 
   const selectedCharacter = useSelector(state => state.characters.selectedCharacter);
 
@@ -34,10 +37,20 @@ function Character () {
     dispatch(fetchCharacterDetail(id));
   }
 
-
   function handleSubmit (data) {
-    const characterBuilded = build(selectedCharacter, data);
-    saveCharacter(characterBuilded);
+    try {
+      const characterBuilded = build(selectedCharacter, data);
+      saveCharacter(characterBuilded);
+      addToast('Saved with success!', {
+        appearance: 'success',
+        autoDismiss: true,
+      });
+    } catch (e) {
+      addToast('An error occurred while trying to save', {
+        appearance: 'error',
+        autoDismiss: true,
+      });
+    }
   }
 
   /*eslint-disable */

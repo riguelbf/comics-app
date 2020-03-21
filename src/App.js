@@ -4,6 +4,7 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import { Provider } from 'react-redux';
+import { ToastProvider } from 'react-toast-notifications';
 
 import Routes from './routes';
 import store from "./store";
@@ -24,7 +25,9 @@ function App () {
       <Router history={history}>
         <GlobalStyles />
         <Header />
-        <Routes />
+        <ToastProvider>
+          <Routes />
+        </ToastProvider>
         <Footer />
       </Router>
     </Provider>
