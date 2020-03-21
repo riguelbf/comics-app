@@ -1,4 +1,4 @@
-import { STORAGE_KEY, saveCharacter } from "../../../services/localStorageService";
+import { STORAGE_KEY, saveCharacter, getCharacters, getCharacterById } from "../../../services/localStorageService";
 
 describe('LocalStorage service', () => {
 
@@ -7,7 +7,7 @@ describe('LocalStorage service', () => {
   beforeEach(() => {
     localStorage.clear();
     characterDataMock = {
-      id: 0,
+      id: 10,
       name: '',
       description: '',
       modified: '',
@@ -39,11 +39,10 @@ describe('LocalStorage service', () => {
     saveCharacter(characterDataMock);
     const characterSaved = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-    expect(characterDataMock).toStrictEqual(characterSaved);
+    expect([characterDataMock]).toStrictEqual(characterSaved);
   });
 
   test('should to get character data', () => {
-
 
     characterDataMock.name = 'Fake name';
     characterDataMock.description = 'fake description';
@@ -57,9 +56,31 @@ describe('LocalStorage service', () => {
     characterDataMock.series.collectionURI = 'fake collectionURI';
     characterDataMock.resourceURI = 'fake resourceURI';
 
-    saveCharacter(characterDataMock);
-    const characterSaved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([characterDataMock]));
 
-    expect(characterDataMock).toStrictEqual(characterSaved);
+    const characterSaved = getCharacters();
+
+    expect(characterSaved).toStrictEqual([characterDataMock]);
+  });
+
+  test('should to get by id character', () => {
+
+    const characterId = 10;
+    const characterDataOtherMock = { ...characterDataMock, id: 20 };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([characterDataMock, characterDataOtherMock]));
+
+    const characterSaved = getCharacterById(characterId);
+
+    expect(characterSaved).toStrictEqual(characterDataMock);
+  });
+
+  test('should to get by id character when have not characters stored', () => {
+
+    const characterId = 10;
+    const characterResult = {};
+
+    const characterSaved = getCharacterById(characterId);
+
+    expect(characterSaved).toStrictEqual(characterResult);
   });
 });
