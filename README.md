@@ -30,6 +30,22 @@
 - [React App Rewired](https://github.com/timarney/react-app-rewired)
 - [Netlify cli to deploy](https://github.com/netlify/cli)
 
+
+## IMPORTANT
+Is necessary the use of API key that is available from [Marvel API](https://developer.marvel.com/documentation/authorization).
+
+## Environment variables or Local storage key
+It is necessary for the correct functioning of the application!
+
+```javascript
+environment variable:
+REACT_APP_API_KEY
+
+local storage key:
+COMICS_API_KEY
+
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
