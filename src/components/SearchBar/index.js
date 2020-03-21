@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropType from 'prop-types';
 
 import { MdSearch } from 'react-icons/md';

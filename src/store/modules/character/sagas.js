@@ -1,4 +1,4 @@
-import { call, put, all, takeLatest, apply } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { API_KEY, HASH, TIME_STAMP } from '../../../config';
 import request from '../../../services/request';
 
