@@ -8,7 +8,7 @@ import { MdVpnKey } from 'react-icons/md';
 import { fetchCharacterDetail } from '../../store/modules/character/actions';
 import { saveCharacter } from '../../services/localStorageService';
 
-import { Wrapper } from './styles';
+import { Wrapper, Container } from './styles';
 import Avatar from '../../components/Avatar';
 import Input from '../../components/Input';
 
@@ -70,55 +70,58 @@ function Character () {
 
   return (
     <Wrapper>
-      <header>
-        <Avatar
-          data-testid="header-character"
-          name="Hulk"
-          thumbnail={thumbnail}
-        />
-        <span>
-          <MdVpnKey />
-          {id}
-        </span>
-        <span>{name}</span>
-      </header>
-      <Form data-testid="form-character" onSubmit={handleSubmit}>
-        <Input
-          label="Name"
-          name="name"
-          value={name}
-        />
-        <Input
-          label="Description"
-          name="description"
-          value={description}
-        />
-        <Input
-          label="Modified at"
-          name="modified"
-          value={new Date(modified).toDateString()}
-        />
-        <Input
-          label="Thumbnail link"
-          name="thumbnailLink"
-          value={`${thumbnail.path}.${thumbnail.extension}`}
-        />
-        <Input
-          label="Resource URI"
-          name="resourceURI"
-          value={resourceURI}
-        />
-        <Input
-          label="Series collection link"
-          name="seriesCollectionURI"
-          value={`${series.collectionURI}`}
-        />
-        <div className="button-container">
-          <button type="submit" className="button" data-testid="button-character">
-            <span>Submit</span>
-          </button>
-        </div>
-      </Form>
+      <h1>Character edit</h1>
+      <Container>
+        <header>
+          <Avatar
+            data-testid="header-character"
+            name="Hulk"
+            thumbnail={thumbnail}
+          />
+          <span>
+            <MdVpnKey />
+            {id}
+          </span>
+          <span>{name}</span>
+        </header>
+        <Form data-testid="form-character" onSubmit={handleSubmit}>
+          <Input
+            label="Name"
+            name="name"
+            value={name}
+          />
+          <Input
+            label="Description"
+            name="description"
+            value={description}
+          />
+          <Input
+            label="Modified at"
+            name="modified"
+            value={new Date(modified).toDateString()}
+          />
+          <Input
+            label="Thumbnail link"
+            name="thumbnailLink"
+            value={`${thumbnail.path}.${thumbnail.extension}`}
+          />
+          <Input
+            label="Resource URI"
+            name="resourceURI"
+            value={resourceURI}
+          />
+          <Input
+            label="Series collection link"
+            name="seriesCollectionURI"
+            value={`${series.collectionURI}`}
+          />
+          <div className="button-container">
+            <button type="submit" className="button" data-testid="button-character">
+              <span>Submit</span>
+            </button>
+          </div>
+        </Form>
+      </Container>
     </Wrapper>
   );
 };
