@@ -7,7 +7,7 @@ import { Container } from './styles';
 function Input ({ name, label, value, ...rest }) {
 
   const inputRef = useRef(null);
-  const { fieldName, defaultValue = '', registerField } = useField(name);
+  const { fieldName, defaultValue = value, registerField } = useField(name);
 
   useEffect(() => {
     registerField({
@@ -21,7 +21,6 @@ function Input ({ name, label, value, ...rest }) {
     <Container>
       <input
         type="text"
-        value={value}
         ref={inputRef}
         id={fieldName}
         defaultValue={defaultValue}

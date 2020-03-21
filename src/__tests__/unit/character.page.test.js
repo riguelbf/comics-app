@@ -20,5 +20,4 @@ describe('Character form page', () => {
     expect(header).toBeDefined();
     expect(form).toBeDefined();
   });
-
 });

@@ -49,7 +49,6 @@ export const Container = styled.div`
   }
 
   input {
-    display: block;
     background: none;
     padding: 0.125rem 0.125rem 0.0625rem;
     font-size: 1rem;

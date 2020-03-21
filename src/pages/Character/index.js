@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Form } from "@unform/web";
 
+import { Form } from "@unform/web";
+import { MdVpnKey } from 'react-icons/md';
 import { fetchCharacterDetail } from '../../store/modules/character/actions';
+import { saveCharacter } from '../../services/localStorageService';
 
 import { Wrapper } from './styles';
 import Avatar from '../../components/Avatar';
@@ -14,6 +16,35 @@ function Character () {
   const { characterId } = useParams();
   const dispatch = useDispatch();
 
+  const selectedCharacter = useSelector(state => state.characters.selectedCharacter);
+
+  function build (character, data) {
+    character.name = data.name;
+    character.description = data.description;
+    character.modified = data.modified;
+    character.thumbnail.path = data.thumbnailLink.substr(0, data.thumbnailLink.length - 4);
+    character.thumbnail.extension = data.thumbnailLink.substr(data.thumbnailLink.length - 3, 3);
+    character.resourceURI = data.resourceURI;
+    character.series.collectionURI = data.seriesCollectionURI;
+
+    return { ...character };
+  }
+
+  function handleFetchCharacterDetail (id) {
+    dispatch(fetchCharacterDetail(id));
+  }
+
+
+  function handleSubmit (data) {
+    const characterBuilded = build(selectedCharacter, data);
+    saveCharacter(characterBuilded);
+  }
+
+  /*eslint-disable */
+  useEffect(() => {
+    handleFetchCharacterDetail(characterId);
+  }, []);
+
   const {
     id,
     name,
@@ -22,21 +53,7 @@ function Character () {
     thumbnail,
     resourceURI,
     series
-  } = useSelector(state => state.characters.selectedCharacter);
-
-  function handleFetchCharacterDetail (id) {
-    dispatch(fetchCharacterDetail(id));
-  }
-
-
-  function handleSubmit (data) {
-    console.log(data);
-  }
-
-  /*eslint-disable */
-  useEffect(() => {
-    handleFetchCharacterDetail(characterId);
-  }, []);
+  } = selectedCharacter;
 
   return (
     <Wrapper>
@@ -46,13 +63,13 @@ function Character () {
           name="Hulk"
           thumbnail={thumbnail}
         />
+        <span>
+          <MdVpnKey />
+          {id}
+        </span>
+        <span>{name}</span>
       </header>
       <Form data-testid="form-character" onSubmit={handleSubmit}>
-        <Input
-          label="Id"
-          name={"teste"}
-          value={id}
-        />
         <Input
           label="Name"
           name="name"
@@ -84,7 +101,7 @@ function Character () {
           value={`${series.collectionURI}`}
         />
         <div className="button-container">
-          <button type="submit" className="button">
+          <button type="submit" className="button" data-testid="button-character">
             <span>Submit</span>
           </button>
         </div>

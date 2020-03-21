@@ -15,14 +15,30 @@ export const Wrapper = styled.div`
 
   header {
     display:flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 
     div:nth-child(1) div img {
       height: 13.9rem;
       width: 13.8em;
       border: 2px solid #fff;
       margin-top: -200px;
+      margin-bottom: 30px;
       box-shadow: 0 8px 10px 1px rgba(25, 25, 32, 1), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+    }
+
+    span {
+      color: #191920;
+      font-weight: bold;
+      font-size: large;
+      display: flex;
+      align-items: center;
+
+      svg {
+        color: red;
+        margin-right: 5px;
+      }
     }
   }
 

@@ -12,7 +12,8 @@ const getCharacterById = (id) => {
 
 const saveCharacter = (character) => {
   const charactersStored = getCharacters();
-  const characters = [...charactersStored, character];
+  const charactersWithoutNew = charactersStored.filter(c => c.id !== character.id);
+  const characters = [...charactersWithoutNew, character];
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(characters));
 };
