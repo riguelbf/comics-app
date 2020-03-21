@@ -6,7 +6,7 @@ import { MdAccountCircle, MdVpnKey } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Avatar from '../Avatar';
-import { Container } from './styles';
+import { Container, Bottom } from './styles';
 
 import * as CharacterActions from '../../store/modules/character/actions';
 
@@ -31,7 +31,7 @@ function CharacterCard ({ character }) {
         name={character.name}
         handleClick={() => handleRedirectToDetail()}
       />
-      <aside>
+      <Bottom>
         <span>
           <MdVpnKey size={20} color="#f2db00" />
           {character.id}
@@ -40,7 +40,7 @@ function CharacterCard ({ character }) {
           <MdAccountCircle size={20} color="#f2db00" />
           {character.name}
         </strong>
-      </aside>
+      </Bottom>
     </Container>
   );
 }

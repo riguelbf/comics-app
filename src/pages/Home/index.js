@@ -29,6 +29,7 @@ export default function Home () {
 
   return (
     <Wrapper>
+      <h1>Characters</h1>
       <CharactersList characters={characters} />
     </Wrapper>
   );

@@ -1,5 +1,4 @@
 /* istanbul ignore file */
-/* istanbul ignore file */
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
